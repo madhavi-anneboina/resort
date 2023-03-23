@@ -1,34 +1,26 @@
 import React from "react";
-import './App.css';
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Switch 
-} from "react-router-dom";
+import "./App.css";
+
 import Home from "./pages/Home";
 import Rooms from "./pages/Rooms";
 import SingleRoom from "./pages/SingleRoom";
 import Error from "./pages/Error";
+
 import Navbar from "./components/Navbar";
 
-const App = () => {
+import {  Route, Routes } from "react-router-dom";
+
+function App() {
   return (
-    <div>
-     
-    <BrowserRouter>
-    <Navbar />
+    <>
+      <Navbar />
       <Routes>
-      <Route exact path="/" element={<Home />} />
-     <Route exact path="/rooms" element={<Rooms />} />
-     <Route exact path="/single-room" element={<SingleRoom/>} />
-     <Route path="*" element={<Error/>} />
-      
+         <Route path="/" exact element={<Home/> } />
+         <Route path="/rooms/" exact element={<Rooms/> } />
+         <Route exact path="/rooms/:slug"  element={<SingleRoom/> } />
+         <Route exact element={<Error/> } />
       </Routes>
-    </BrowserRouter>
-     
-      
-    </div>
+    </>
   );
 }
 
